@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChippyCal Features</title>
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(126, 247, 168, 0.16), transparent 34%),
+                linear-gradient(180deg, #0b1014 0%, #090c10 100%);
+            color: #f5f7fa;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(14px);
+            background: rgba(10, 14, 18, 0.78);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .site-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .site-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .site-brand.active {
+            color: #d8ffe3;
+        }
+
+        .site-brand.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -8px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #7ef7a8 0%, #67e49f 100%);
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .site-nav a {
+            color: rgba(255, 255, 255, 0.82);
+            text-decoration: none;
+            font-size: 0.96rem;
+            transition: opacity 0.2s ease;
+            position: relative;
+        }
+
+        .site-nav a.active {
+            color: #d8ffe3;
+        }
+
+        .site-nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -8px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #7ef7a8 0%, #67e49f 100%);
+        }
+
+        .site-nav .nav-download.active::after {
+            display: none;
+        }
+
+        .site-nav a:hover {
+            opacity: 1;
+        }
+
+        .site-nav .nav-download {
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(126, 247, 168, 0.14);
+            border: 1px solid rgba(126, 247, 168, 0.28);
+            color: #d8ffe3;
+        }
+
+        .page-hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 96px 48px 32px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: flex-start;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(126, 247, 168, 0.12);
+            border: 1px solid rgba(126, 247, 168, 0.22);
+            color: #d6ffe2;
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            margin: 0 0 20px;
+            max-width: 900px;
+        }
+
+        .hero-copy {
+            max-width: 780px;
+            font-size: 1.12rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .hero-phone {
+            display: flex;
+            justify-content: center;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 72px 48px;
+        }
+
+        .section-header {
+            max-width: 760px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+            margin: 0 0 16px;
+            letter-spacing: -0.03em;
+        }
+
+        .section-header p {
+            margin: 0;
+            font-size: 1.06rem;
+            line-height: 1.8;
+            opacity: 0.86;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 32px;
+        }
+
+        .feature-tag {
+            display: inline-flex;
+            margin-bottom: 18px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.9rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 14px;
+            font-size: 1.45rem;
+        }
+
+        .feature-card p {
+            margin: 0 0 18px;
+            line-height: 1.75;
+            opacity: 0.85;
+        }
+
+        .feature-card ul {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .feature-card li {
+            line-height: 1.55;
+            opacity: 0.95;
+        }
+
+        .example-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .example-card,
+        .placeholder-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 32px;
+        }
+
+        .example-card h3,
+        .placeholder-card h3 {
+            margin: 0 0 16px;
+            font-size: 1.3rem;
+        }
+
+        .example-card p,
+        .placeholder-card p {
+            margin: 0 0 16px;
+            line-height: 1.75;
+            opacity: 0.86;
+        }
+
+        .example-card p:last-child,
+        .placeholder-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .example-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .example-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .example-row:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .example-label {
+            opacity: 0.7;
+        }
+
+        .example-value {
+            font-weight: 700;
+        }
+
+        .footer-cta {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px 72px;
+        }
+
+        .footer-cta-card {
+            background: rgba(126, 247, 168, 0.08);
+            border: 1px solid rgba(126, 247, 168, 0.18);
+            border-radius: 28px;
+            padding: 34px;
+        }
+
+        .footer-cta-card h2 {
+            margin: 0 0 14px;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+        }
+
+        .footer-cta-card p {
+            margin: 0 0 22px;
+            max-width: 760px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7ef7a8 0%, #67e49f 100%);
+            color: #07110c;
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: #f5f7fa;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-1px);
+            opacity: 0.96;
+        }
+
+        @media (max-width: 980px) {
+            .site-header-inner {
+                padding: 16px 24px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .page-hero,
+            .section,
+            .footer-cta {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .feature-grid,
+            .example-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="site-brand">ChippyCal</a>
+
+            <nav class="site-nav">
+                <a href="features.html" class="active">Features</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="community.html">Community</a>
+                <div style="position:relative; display:flex; align-items:center;">
+                    <a href="index.html#appstore" class="nav-download">Download</a>
+                    <div style="position:absolute; top:36px; left:50%; transform:translateX(-50%); font-size:0.7rem; opacity:0.6; white-space:nowrap;">Coming soon</div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div>
+            <span class="eyebrow">ChippyCal features</span>
+            <h1>Built to speed up your workflow so you can get on with the job.</h1>
+            <p class="hero-copy">
+                ChippyCal is being built to make everyday carpenter calculations faster, clearer, and more useful. The goal is not to cram in random functions. The goal is to focus on the measurements, layout work, and job-site workflows that actually matter.
+            </p>
+        </div>
+        <div class="hero-phone">
+            <img src="stud-mode.png" alt="ChippyCal stud mode full screen" style="width:360px; max-width:100%; border-radius:32px; box-shadow:0 30px 80px rgba(0,0,0,0.6);">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <h2>Instant metric ↔ imperial conversion</h2>
+            <p>
+                On real jobs you often end up working with people using different measurement systems. Some drawings are metric, some materials are imperial, and different trades often prefer different ways of working. ChippyCal shows both at the same time so you can move between them instantly without switching modes or doing conversions in your head.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <span class="feature-tag">Calculator</span>
+                <h3>Live metric ↔ imperial conversion</h3>
+                <p>
+                    Whether you're working old‑school imperial, modern metric, or constantly switching between both, ChippyCal keeps the numbers clear. Enter a value in either system and the other updates instantly so you can work the way you prefer without stopping to convert.
+                </p>
+                <ul>
+                    <li>Instant metric to imperial conversion</li>
+                    <li>Instant imperial to metric conversion</li>
+                    <li>No buttons or mode switching</li>
+                    <li>Clear side‑by‑side results</li>
+                </ul>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-tag">Geometry</span>
+                <h3>Run, rise and diagonal</h3>
+                <p>
+                    Useful for roof work, stairs, framing, and quick geometry checks when you want answers fast and do not want to fight a generic calculator.
+                </p>
+                <ul>
+                    <li>Run and rise inputs</li>
+                    <li>Diagonal calculations</li>
+                    <li>Layout checking on the fly</li>
+                    <li>Made for site-friendly use</li>
+                </ul>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-tag">Framing</span>
+                <h3>Stud Mode / framing layout</h3>
+                <p>
+                    One of the main ideas behind ChippyCal is making framing calculations quicker. Enter the studwork measurements, spacing, timber thickness, and layout choices and the app generates the full framing layout plus a complete cut list of every part so you can start cutting immediately.
+                </p>
+                <ul>
+                    <li>Stud spacing support</li>
+                    <li>Noggin layout planning</li>
+                    <li>Total timber calculations</li>
+                    <li>Full cut list with measurements</li>
+                    <li>Sheet count support</li>
+                </ul>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-tag">Workflow</span>
+                <h3>Cut lists and saved values</h3>
+                <p>
+                    Keep useful measurements together instead of constantly retyping them. The aim is to make it easier to stay organised and move from numbers to cutting faster.
+                </p>
+                <ul>
+                    <li>Simple cut list creation</li>
+                    <li>Saved measurements</li>
+                    <li>Cleaner repeated workflows</li>
+                    <li>Built for speed over clutter</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <h2>Stud Mode example</h2>
+            <p>
+                Stud Mode helps you quickly move from basic measurements to a full framing layout. Enter the run and rise, choose your stud and nog centres, and ChippyCal calculates the uprights, noggins, timber totals, and sheet counts automatically.
+            </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;">
+
+            <div>
+                <h3>Example wall layout</h3>
+                <p>
+                    In this example a 10 foot run and 8 foot rise wall is calculated with 2' stud centres and nog centres. The calculator returns the diagonal check, upright lengths, number of uprights, nog layout, and total timber required.
+                </p>
+
+                <ul style="margin-top:16px; padding-left:18px; display:grid; gap:8px;">
+                    <li>Run and rise wall dimensions</li>
+                    <li>Automatic diagonal check</li>
+                    <li>Stud and nog spacing calculations</li>
+                    <li>Total timber requirement</li>
+                    <li>Sheet count estimation</li>
+                </ul>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <div class="footer-cta-card">
+            <h2>More features will be shaped by real use.</h2>
+            <p>
+                ChippyCal is being built to improve over time. The strongest features will come from repeated use, better workflows, and feedback from carpenters who actually want a faster way to work.
+            </p>
+            <div id="mc_embed_signup" style="margin-top:20px;">
+                <form action="https://chippycal.us5.list-manage.com/subscribe/post?u=5f788e381d7d2507d632d8ed6&amp;id=597a0e510a&amp;f_id=00c2bdedf0" method="post" target="_self">
+                    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
+                        <input
+                            type="email"
+                            name="EMAIL"
+                            placeholder="Enter your email for early access"
+                            required
+                            style="min-height:52px; padding:0 16px; border-radius:999px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.04); color:#f5f7fa; min-width:260px; font-size:0.95rem;"
+                        >
+                        <button type="submit" class="btn-primary">Get early access</button>
+                    </div>
+
+                    <div style="position:absolute; left:-5000px;" aria-hidden="true">
+                        <input type="text" name="b_5f788e381d7d2507d632d8ed6_597a0e510a" tabindex="-1" value="">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>
