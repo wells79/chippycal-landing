@@ -3,74 +3,192 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ChippyCal – Carpentry Calculator for Site Work</title>
-<meta name="description" content="ChippyCal is a fast carpentry calculator built for real site work. Convert metric and imperial, calculate run and rise, and generate cut lists instantly." />
+<title>ChippyCal | Carpenter Calculator App</title>
+<meta name="description" content="ChippyCal is a carpenter calculator app built for fast metric and imperial conversions, framing layouts, run/rise/diagonal calculations, and cut lists." />
 
 <style>
 body {
   margin:0;
   font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-  background:#0b1014;
+  background:
+    radial-gradient(circle at top, rgba(126, 247, 168, 0.18), transparent 34%),
+    linear-gradient(180deg, #0b1014 0%, #090c10 100%);
   color:#f5f7fa;
 }
 .container {
-  max-width:1000px;
+  max-width:1100px;
   margin:0 auto;
   padding:80px 24px;
 }
 h1 {
-  font-size:3rem;
+  font-size:clamp(2.5rem,5vw,4rem);
   margin-bottom:20px;
 }
 p {
   line-height:1.7;
   opacity:0.9;
 }
-a {
-  color:#7ef7a8;
+.hero {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.button {
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:999px;
+  background:#7ef7a8;
+  color:#07110c;
+  font-weight:600;
   text-decoration:none;
 }
 .section {
+  margin-top:80px;
+}
+.card {
+  background:rgba(255,255,255,0.04);
+  padding:24px;
+  border-radius:20px;
+  margin-top:20px;
+}
+.header {
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(9,12,16,0.72);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.header-inner {
+  max-width:1100px;
+  margin:0 auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+}
+.logo {
+  color:#d8ffe3;
+  font-weight:700;
+  text-decoration:none;
+  letter-spacing:0.02em;
+}
+.nav {
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+.nav a {
+  text-decoration:none;
+  color:rgba(255,255,255,0.78);
+  font-size:0.92rem;
+}
+.nav a:hover {
+  color:#ffffff;
+}
+.nav .download-link {
+  padding:9px 14px;
+  border-radius:999px;
+  background:rgba(126,247,168,0.12);
+  border:1px solid rgba(126,247,168,0.24);
+  color:#d8ffe3;
+}
+.signup {
+  background:rgba(126,247,168,0.08);
+  padding:30px;
+  border-radius:20px;
+}
+.input {
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  width:250px;
+  margin-right:10px;
+}
+.footer {
   margin-top:60px;
+  font-size:0.8rem;
+  opacity:0.6;
 }
 </style>
 </head>
 
 <body>
 
+<header class="header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">ChippyCal</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="development.html">Development</a>
+      <a class="download-link" href="#appstore">Download</a>
+    </nav>
+  </div>
+</header>
+
 <div class="container">
 
-<h1>Carpentry Calculator Built for Real Site Work</h1>
+<div class="hero">
+  <div>
+    <h1>The fast carpenter calculator for real site work</h1>
+    <p>
+      ChippyCal is built for real jobs — fast metric & imperial conversions, run/rise calculations, framing layouts, and cut lists.
+    </p>
 
-<p>
-ChippyCal is a fast, practical carpentry calculator designed for real site work.
-Convert between metric and imperial instantly, calculate run and rise, and generate cut lists without slowing down.
-</p>
+    <a href="#" class="button">Coming Soon</a>
+  </div>
 
-<p>
-Built by a carpenter, for carpenters — no complicated menus, just the tools you actually need on site.
-</p>
-
-<div class="section">
-<h2>What ChippyCal Does</h2>
-
-<p>
-Use ChippyCal as a construction calculator for framing layouts, geometry, diagonal measurements, and quick unit conversions.
-Switch between mm, cm, metres, feet and inches instantly while you work.
-</p>
-
-<p>
-Generate clean cut lists and share them straight from your phone — making it easier to organise materials and communicate on the job.
-</p>
+  <div>
+    <img src="images/chippycal-clean-phone.png" style="width:82%; max-width:420px; display:block; margin:0 auto; border-radius:20px;">
+  </div>
 </div>
 
 <div class="section">
-<h2>Tools</h2>
+  <h2>Core Features</h2>
 
-<p>
-<a href="metric-imperial-calculator.html">Metric to Imperial Calculator</a>
-</p>
+  <div class="card">
+    <strong>Instant Metric ↔ Imperial</strong>
+    <p>Switch between mm and feet/inches instantly with proper fractions.</p>
+  </div>
 
+  <div class="card">
+    <strong>Run / Rise / Diagonal</strong>
+    <p>Quickly calculate diagonals for roofs, stairs, and framing.</p>
+  </div>
+
+  <div class="card">
+    <strong>Stud Mode</strong>
+    <p>Work out stud layouts, noggins, and cut lists without doing it in your head.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Why ChippyCal</h2>
+  <p>
+    Built by a carpenter, for carpenters. No clutter, no confusing menus — just the tools you actually use on site.
+  </p>
+</div>
+
+<div class="section signup">
+  <h2>Get early access</h2>
+  <p>Join the list for updates and launch access.</p>
+
+  <input class="input" type="email" placeholder="Enter your email">
+  <a href="#" class="button">Join</a>
+</div>
+
+<div class="section" id="appstore">
+  <h2>Coming soon to the App Store</h2>
+  <p>
+    ChippyCal is currently in testing. Full release coming soon.
+  </p>
+</div>
+
+<div class="footer">
+  © 2026 ChippyCal — Built for carpenters
 </div>
 
 </div>
