@@ -1,11 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ChippyCal Development</title>
+<link rel="stylesheet" href="header.css">
 <style>
 :root { color-scheme: dark; }
 
@@ -19,58 +18,6 @@ radial-gradient(circle at top, rgba(126, 247, 168, 0.18), transparent 34%),
 linear-gradient(180deg, #0b1014 0%, #090c10 100%);
 color: #f5f7fa;
 line-height: 1.6;
-}
-
-/* Header styles */
-.header {
-position: sticky;
-top: 0;
-z-index: 1000;
-background: rgba(9, 12, 16, 0.72);
-backdrop-filter: blur(14px);
-border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.header-inner {
-max-width: 1100px;
-margin: 0 auto;
-padding: 16px 24px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-gap: 24px;
-}
-
-.logo {
-color: #d8ffe3;
-font-weight: 700;
-text-decoration: none;
-letter-spacing: 0.02em;
-}
-
-.nav {
-display: flex;
-align-items: center;
-gap: 20px;
-}
-
-.nav a {
-text-decoration: none;
-color: rgba(255, 255, 255, 0.78);
-font-size: 0.92rem;
-position: relative;
-}
-
-.nav a:hover {
-color: #ffffff;
-}
-
-.nav .download-link {
-padding: 9px 14px;
-border-radius: 999px;
-background: rgba(126, 247, 168, 0.12);
-border: 1px solid rgba(126, 247, 168, 0.24);
-color: #d8ffe3;
 }
 
 .page-hero {
@@ -240,7 +187,7 @@ grid-template-columns: 1fr;
 <a class="logo" href="index.html">ChippyCal</a>
 <nav class="nav" aria-label="Main navigation">
 <a href="features.html">Features</a>
-<a href="development.html">Development</a>
+<a class="active" href="development.html">Development</a>
 <div style="position:relative; display:flex; align-items:center;">
 <a class="download-link" href="#">Download</a>
 <div style="position:absolute; top:34px; left:50%; transform:translateX(-50%); font-size:0.7rem; opacity:0.6; white-space:nowrap;">Coming soon</div>
@@ -297,11 +244,11 @@ Once version 1 is solid, future updates will build on the core workflow instead 
 <div class="card">
 <h3>Planned next features</h3>
 <ul>
-<li>Material estimator</li>
-<li>Timber quantity calculations</li>
-<li>Saved jobs and saved walls</li>
-<li>More construction-focused tools</li>
-</ul>
+<li> Price estimator</li>
+<li> improved circle mode</li>
+<li> cut List refinement</li>
+</li>
+</ul> 
 </div>
 
 <div class="card">

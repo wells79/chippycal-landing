@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ChippyCal Features</title>
+    <link rel="stylesheet" href="header.css">
     <style>
         :root {
             color-scheme: dark;
@@ -31,60 +32,6 @@
             color: inherit;
         }
 
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(9, 12, 16, 0.72);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .header-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .logo {
-            color: #d8ffe3;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 0.02em;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.78);
-            font-size: 0.92rem;
-            position: relative;
-        }
-
-        .nav a:hover {
-            color: #ffffff;
-        }
-
-        .nav .download-link {
-            padding: 9px 14px;
-            border-radius: 999px;
-            background: rgba(126, 247, 168, 0.12);
-            border: 1px solid rgba(126, 247, 168, 0.24);
-            color: #d8ffe3;
-        }
-
-        .nav .download-link::after {
-            display: none;
-        }
 
         .page-hero {
             max-width: 1200px;
@@ -338,7 +285,7 @@
         <div class="header-inner">
             <a class="logo" href="index.html">ChippyCal</a>
             <nav class="nav" aria-label="Main navigation">
-                <a href="features.html">Features</a>
+                <a class="active" href="features.html">Features</a>
                 <a href="development.html">Development</a>
                 <div style="position:relative; display:flex; align-items:center;">
                   <a class="download-link" href="#">Download</a>
@@ -429,34 +376,6 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="section-header">
-            <h2>Stud Mode example</h2>
-            <p>
-                Stud Mode helps you quickly move from basic measurements to a full framing layout. Enter the run and rise, choose your stud and nog centres, and ChippyCal calculates the uprights, noggins, timber totals, and sheet counts automatically.
-            </p>
-        </div>
-
-        <div class="feature-card">
-
-            <div>
-                <h3>Example wall layout</h3>
-                <p>
-                    In this example a 10 foot run and 8 foot rise wall is calculated with 2' stud centres and nog centres. The calculator returns the diagonal check, upright lengths, number of uprights, nog layout, and total timber required.
-                </p>
-
-                <ul style="margin-top:16px; padding-left:18px; display:grid; gap:8px;">
-                    <li>Run and rise wall dimensions</li>
-                    <li>Automatic diagonal check</li>
-                    <li>Stud and nog spacing calculations</li>
-                    <li>Total timber requirement</li>
-                    <li>Sheet count estimation</li>
-                </ul>
-            </div>
-
-
-        </div>
-    </section>
 
     <section class="footer-cta">
         <div class="footer-cta-card">
